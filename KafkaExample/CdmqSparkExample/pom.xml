@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>cdmq</groupId>
+	<artifactId>spark-example</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>CdmqSparkExample</name>
+	<description>cdmq java example</description>
+
+	<properties>
+		<scala.binary.version>2.12</scala.binary.version>
+		<spark.version>2.4.3</spark.version>
+		<jackson.version>2.9.4</jackson.version><!-- 公司安全限制需要，jackson版本必须在2.9.4以上 本来是引用的2.6.7。但换成高版本后会引发新问题，因此只能使用外网maven进行打包，使用默认版本 -->
+	</properties>
+
+	<dependencies>
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.fasterxml.jackson.core</groupId> -->
+<!-- 			<artifactId>jackson-databind</artifactId> -->
+<!-- 			<version>${jackson.version}</version> -->
+<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-core_${scala.binary.version}</artifactId>
+			<version>${spark.version}</version>
+<!-- 			<exclusions> -->
+<!-- 				<exclusion> -->
+<!-- 					<groupId>com.fasterxml.jackson.core</groupId> -->
+<!-- 					<artifactId>jackson-databind</artifactId> -->
+<!-- 				</exclusion> -->
+<!-- 			</exclusions> -->
+		</dependency>
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-streaming_${scala.binary.version}</artifactId>
+			<version>${spark.version}</version>
+<!-- 			<exclusions> -->
+<!-- 				<exclusion> -->
+<!-- 					<groupId>com.fasterxml.jackson.core</groupId> -->
+<!-- 					<artifactId>jackson-databind</artifactId> -->
+<!-- 				</exclusion> -->
+<!-- 			</exclusions> -->
+		</dependency>
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-streaming-kafka-0-10_${scala.binary.version}</artifactId>
+			<version>${spark.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.kafka</groupId>
+					<artifactId>kafka-clients</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- 请显示设置kafka版本为1.1.1 当前服务端仅支持0.11-1.1.1版本之间的sdk请求 -->
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+	</dependencies>
+</project>
