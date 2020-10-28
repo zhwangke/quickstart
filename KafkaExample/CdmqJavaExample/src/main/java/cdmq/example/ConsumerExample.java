@@ -13,10 +13,10 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 public class ConsumerExample {
 
     public static void main(String[] args) {
-        // 接入点有两种类型，一是域名，二是CL5。域名仅支持原MIG范围内的机器，是过渡办法，CL5是未来趋势，后续CDMQ也会统一使用CL5来做服务发现
-        String entry = "cdmqszentry01.data.mig:10005,cdmqszentry02.data.mig:10069";// 接入点，在管理页面中可查询到
+        
+        String entry = "cdmqszentry01.data.mig:10005,cdmqszentry02.data.mig:10069";// 接入点broker
         String topic = "U_TOPIC_example_usage"; // 在管理页面中创建
-        String groupId = "cg_test_example_usage";// 消费组id，在管理页面自行创建，并关联上topic。必填，否则无法访问到CDMQ
+        String groupId = "cg_test_example_usage";// 消费组id，自行创建，并关联上topic。必填，否则无法访问CDMQ
         int msgCount = 10;
 
         if (args.length >= 3) {
