@@ -9,7 +9,7 @@
 
 	<properties>
 		<scala.binary.version>2.12</scala.binary.version>
-		<spark.version>2.4.3</spark.version>
+		<spark.version>3.4.0</spark.version>
 		<jackson.version>2.9.4</jackson.version><!-- 公司安全限制需要，jackson版本必须在2.9.4以上 本来是引用的2.6.7。但换成高版本后会引发新问题，因此只能使用外网maven进行打包，使用默认版本 -->
 	</properties>
 
